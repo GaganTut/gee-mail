@@ -1,0 +1,15 @@
+* {
+    background-color: rgba(33, 34, 100,0.25);
+    Color: rgb(3, 2, 130);
+}
+h1 {
+    font-family: 'Block', serif;
+    font-size:60px;
+    font-weight:800;
+} 
+main {
+
+}
+table {
+    background-color: rgba(125, 146, 183,0.5);
+}

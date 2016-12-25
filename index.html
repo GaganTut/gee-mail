@@ -2,17 +2,41 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+        <title>GEE-MAIL Coding Challenge</title>
     <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
+        window.onload = function () {
+            // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
+            // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+            for (a = 0; a < 10; a++) {
+                function addCell() {
+                    var newGeeRow = inbox.insertRow(1);
+                    var geeDateCol = newGeeRow.insertCell(0);
+                    var geeDate = document.createTextNode(window.geemails[a].date);
+                    geeDateCol.appendChild(geeDate);
+                    var geeSubCol = newGeeRow.insertCell(1);
+                    var geeSub = document.createTextNode(window.geemails[a].subject);
+                    geeSubCol.appendChild(geeSub);
+                    var geeSendCol = newGeeRow.insertCell(2);
+                    var geeSend = document.createTextNode(window.geemails[a].sender);
+                    geeSendCol.appendChild(geeSend);
+                };
+            }; addCell();
+        };
     </script>
 	</head>
 	<body>
+        <h1>GEEMAIL
+        </h1>
+        <h2>Gee, mail sure is coming in...
+        </h2>
 		<div class="container" id="main">
-			Build Me!
+            <table id="inbox" border="5" cellpadding="2" cellspacing="2">
+                <tr id="geeHead">
+                    <td>Date</td>
+                    <td>Subject</td>
+                    <td>Sender</td>
+                </tr>
+            </table>	    
 		</div>
 	</body>
 </html>
