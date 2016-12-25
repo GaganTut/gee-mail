@@ -7,32 +7,35 @@
         window.onload = function () {
             // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
             // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-            for (i = 0; i < window.geemails.length; i++) {
-                function addRow() {
+           
+            for (var z = 0 ; z < 10 ; z++) {
+
+                function addRow(z) {
                     var newGeeRow = inbox.insertRow(1);
+
                     var geeDateCol = newGeeRow.insertCell(0);
                     var geeDate = document.createTextNode(window.geemails[1].date);
                     geeDateCol.appendChild(geeDate);
+
                     var geeSubCol = newGeeRow.insertCell(1);
                     var geeSub = document.createTextNode(window.geemails[1].subject);
                     geeSubCol.appendChild(geeSub);
+
                     var geeSendCol = newGeeRow.insertCell(2);
                     var geeSend = document.createTextNode(window.geemails[1].sender);
                     geeSendCol.appendChild(geeSend);
+
                     var geeBodyCol = newGeeRow.insertCell(3);
                     var bodyBtn = document.createElement('button');
                     geeBodyCol.appendChild(bodyBtn);
                     bodyBtn.innerHTML = "Open Message";
                     bodyBtn.onclick = function () {
-                        var bodyRow = inbox.insertRow(2)
+                        var bodyRow = inbox.insertRow();
                         var openBody = bodyRow.insertCell(0);
                         var openBody2 = document.createTextNode(window.geemails[1].body);
-                        openBody2.appendChild(openBody);
+                        openBody.appendChild(openBody2);
                     };
                 };
-                
-
-
             }; addRow();
         };
     </script>
