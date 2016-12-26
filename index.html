@@ -11,6 +11,9 @@
             for (var z = 0 ; z < 10 ; z++) {
                 addRow(window.geemails[z]);
             };
+            var inboxCount = 10;
+            document.getElementById('boxCount').innerHTML = inboxCount + " Geemails";
+
                 function addRow(emails) {
                     var newGeeRow = inbox.insertRow(1);
 
@@ -31,40 +34,48 @@
                     geeBodyCol.appendChild(bodyBtn);
                     bodyBtn.innerHTML = "Open Message";
                     bodyBtn.onclick = function () {
-                        var openBody = newGeeRow.insertCell(4);
-                        var openBody2 = document.createTextNode(emails.body);
-                        openBody.appendChild(openBody2);
+                        var cellBody = newGeeRow.insertCell(4);
+                        var cellData = document.createTextNode(emails.body);
+                        cellBody.appendChild(cellData);
                         bodyBtn.innerHTML = "Close Message";
-                        };
+                        
+                    }
                 };
                 setInterval(function () {
                     alert("New Message!");
                     document.getElementById("btnLoad").disabled = false;
                     btnLoad.onclick = function () {
+                        inboxCount += 1;
+                        document.getElementById('boxCount').innerHTML = inboxCount + " Geemails"
                         addRow(getNewMessage());
                         document.getElementById("btnLoad").disabled = true;
                     }
                 }, 10000);
+
         };
     </script>
 	</head>
-	<body>
-        <h1>GEEMAIL
-        </h1>
-        <h2>Gee, mail sure is coming in...<button id ="btnLoad"type="button">Load More</button>
-        </h2>
-		<div class="container" id="main">
-            <table id="inbox" border="5" cellpadding="2" cellspacing="2">
-                <tr id="geeHead">
-                    <td>Date</td>
-                    <td>Subject</td>
-                    <td>Sender</td>
-                    <td>Body</td>
-                </tr>
-                <tr id="geeBody">
-
-                </tr>
-            </table>	    
-		</div>
-	</body>
+<body background="geePic.png">
+    <h1>
+        GEEMAIL
+    </h1>
+    <h2>
+        Gee, mail sure is coming in...
+        <button id="boxCount" disabled="disabled"></button>
+        <button id="btnLoad" type="button" disabled="disabled">
+            Load More
+        </button>
+    </h2>
+    <div class="container" id="main" style="overflow-x:auto">
+        <table id="inbox" class="inTable">
+            <tr id="geeHead">
+                <th id="hDate">Date</th>
+                <th id="hSubject">Subject</th>
+                <th id="hSender">Sender</th>
+                <th id="hBody">Body</th>
+            </tr>
+            <tr id="geeBody"></tr>
+        </table>
+    </div>
+</body>
 </html>
