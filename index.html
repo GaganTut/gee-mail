@@ -11,7 +11,6 @@
             for (var z = 0 ; z < 10 ; z++) {
                 addRow(window.geemails[z]);
             };
-
                 function addRow(emails) {
                     var newGeeRow = inbox.insertRow(1);
 
@@ -36,15 +35,23 @@
                         var openBody2 = document.createTextNode(emails.body);
                         openBody.appendChild(openBody2);
                         bodyBtn.innerHTML = "Close Message";
-                    };
+                        };
                 };
+                setInterval(function () {
+                    alert("New Message!");
+                    document.getElementById("btnLoad").disabled = false;
+                    btnLoad.onclick = function () {
+                        addRow(getNewMessage());
+                        document.getElementById("btnLoad").disabled = true;
+                    }
+                }, 10000);
         };
     </script>
 	</head>
 	<body>
         <h1>GEEMAIL
         </h1>
-        <h2>Gee, mail sure is coming in...
+        <h2>Gee, mail sure is coming in...<button id ="btnLoad"type="button">Load More</button>
         </h2>
 		<div class="container" id="main">
             <table id="inbox" border="5" cellpadding="2" cellspacing="2">
