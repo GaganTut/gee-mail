@@ -9,20 +9,22 @@
             // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
            
             for (var z = 0 ; z < 10 ; z++) {
+                addRow(window.geemails[z]);
+            };
 
-                function addRow(z) {
+                function addRow(emails) {
                     var newGeeRow = inbox.insertRow(1);
 
                     var geeDateCol = newGeeRow.insertCell(0);
-                    var geeDate = document.createTextNode(window.geemails[1].date);
+                    var geeDate = document.createTextNode(emails.date);
                     geeDateCol.appendChild(geeDate);
 
                     var geeSubCol = newGeeRow.insertCell(1);
-                    var geeSub = document.createTextNode(window.geemails[1].subject);
+                    var geeSub = document.createTextNode(emails.subject);
                     geeSubCol.appendChild(geeSub);
 
                     var geeSendCol = newGeeRow.insertCell(2);
-                    var geeSend = document.createTextNode(window.geemails[1].sender);
+                    var geeSend = document.createTextNode(emails.sender);
                     geeSendCol.appendChild(geeSend);
 
                     var geeBodyCol = newGeeRow.insertCell(3);
@@ -30,13 +32,12 @@
                     geeBodyCol.appendChild(bodyBtn);
                     bodyBtn.innerHTML = "Open Message";
                     bodyBtn.onclick = function () {
-                        var bodyRow = inbox.insertRow();
-                        var openBody = bodyRow.insertCell(0);
-                        var openBody2 = document.createTextNode(window.geemails[1].body);
+                        var openBody = newGeeRow.insertCell(4);
+                        var openBody2 = document.createTextNode(emails.body);
                         openBody.appendChild(openBody2);
+                        bodyBtn.innerHTML = "Close Message";
                     };
                 };
-            }; addRow();
         };
     </script>
 	</head>
