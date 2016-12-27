@@ -13,10 +13,14 @@ button:hover {
     background-color: #3781dd
 }
 h1, h2 {
+    background: rgba(153,217,234,0.5);
+    color: rgb(3, 24, 30);
+    font-family: Garamond;
     text-align: center;
 }
 .sideBar {
     float: left;
+    margin-right:2.5%;
     width: 15%;
 }
 table,tr, td, th {
@@ -27,14 +31,12 @@ table,tr, td, th {
 }
 .inTable {
     float: left;
-    margin-left: 5%;
-    margin-right:5%;
+    margin-right:2.5%;
     table-layout: fixed;
     width: 40%;
 }
-.bodyTbl {
+.MessageBody {
     float: right;
-    margin-right:5%;
     table-layout: fixed;
     width: 35%;
 }

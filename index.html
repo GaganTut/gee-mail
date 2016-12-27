@@ -37,11 +37,13 @@
                 geeBtnCol.appendChild(bodyBtn);
                 bodyBtn.innerHTML = "Open Message";
                 bodyBtn.onclick = function () {
+                    if (bodyBtn.innerHTML === "Open Message") {
+                        unCount -= 1;
+                        document.getElementById('Unread').innerHTML = unCount + " Unread Messages";
+                    };
                     bodyBtn.innerHTML = "Opened, Click to Open Again"
                     closeBtn.disabled = false;
-                    unCount -= 1;
-                    document.getElementById('Unread').innerHTML = unCount + " Unread Messages";
-                    var newTable = document.getElementById('mybodyTable');
+
                     var msgTable = document.createElement('TABLE');
                     msgTable.className = 'MessageBody';
 
@@ -52,21 +54,21 @@
                     msgBody.appendChild(dateRow);
                     var dateData = document.createElement('TD');
                     dateData.width = '500';
-                    dateData.appendChild(document.createTextNode(emails.date))
+                    dateData.appendChild(document.createTextNode("Date:  " + emails.date))
                     dateRow.appendChild(dateData);
 
                     var senderRow = document.createElement('TR');
                     msgBody.appendChild(senderRow);
                     var senderData = document.createElement('TD');
                     senderData.width = '500';
-                    senderData.appendChild(document.createTextNode(emails.sender));
+                    senderData.appendChild(document.createTextNode("Sender:  " + emails.sender));
                     senderRow.appendChild(senderData);
 
                     var subjectRow = document.createElement('TR');
                     msgBody.appendChild(subjectRow);
                     var subjectData = document.createElement('TD');
                     subjectData.width = '500';
-                    subjectData.appendChild(document.createTextNode(emails.subject));
+                    subjectData.appendChild(document.createTextNode("Subject:  " + emails.subject));
                     subjectRow.appendChild(subjectData);
 
                     var bodyRow = document.createElement('TR');
