@@ -15,6 +15,10 @@ button:hover {
 h1, h2 {
     text-align: center;
 }
+.sideBar {
+    float: left;
+    width: 15%;
+}
 table,tr, td, th {
     border: 2px dotted rgb(8, 191, 239);
     overflow: hidden;
@@ -23,7 +27,7 @@ table,tr, td, th {
 }
 .inTable {
     float: left;
-    margin-left: 15%;
+    margin-left: 5%;
     margin-right:5%;
     table-layout: fixed;
     width: 40%;

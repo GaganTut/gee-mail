@@ -12,7 +12,9 @@
                 addRow(window.geemails[z]);
             };
             var inboxCount = 10;
-            document.getElementById('boxCount').innerHTML = inboxCount + " Geemails";
+            document.getElementById('boxCount').innerHTML = inboxCount + " Total Geemails";
+            var unCount = 10;
+            document.getElementById('Unread').innerHTML = unCount + " Unread Geemails";
 
             function addRow(emails) {
                 var newGeeRow = inbox.insertRow(1);
@@ -31,31 +33,57 @@
 
                 var geeBtnCol = newGeeRow.insertCell(3);
                 var bodyBtn = document.createElement('button');
+                bodyBtn.className = "openBtn";
                 geeBtnCol.appendChild(bodyBtn);
                 bodyBtn.innerHTML = "Open Message";
                 bodyBtn.onclick = function () {
+                    bodyBtn.innerHTML = "Opened, Click to Open Again"
                     closeBtn.disabled = false;
+                    unCount -= 1;
+                    document.getElementById('Unread').innerHTML = unCount + " Unread Messages";
                     var newTable = document.getElementById('mybodyTable');
                     var msgTable = document.createElement('TABLE');
                     msgTable.className = 'MessageBody';
-                    msgTable.border = '2';
-                    msgTable.borderColor = 'rgb(8, 191, 239';
 
                     var msgBody = document.createElement('TBODY');
                     msgTable.appendChild(msgBody);
 
+                    var dateRow = document.createElement('TR');
+                    msgBody.appendChild(dateRow);
+                    var dateData = document.createElement('TD');
+                    dateData.width = '500';
+                    dateData.appendChild(document.createTextNode(emails.date))
+                    dateRow.appendChild(dateData);
+
+                    var senderRow = document.createElement('TR');
+                    msgBody.appendChild(senderRow);
+                    var senderData = document.createElement('TD');
+                    senderData.width = '500';
+                    senderData.appendChild(document.createTextNode(emails.sender));
+                    senderRow.appendChild(senderData);
+
+                    var subjectRow = document.createElement('TR');
+                    msgBody.appendChild(subjectRow);
+                    var subjectData = document.createElement('TD');
+                    subjectData.width = '500';
+                    subjectData.appendChild(document.createTextNode(emails.subject));
+                    subjectRow.appendChild(subjectData);
+
                     var bodyRow = document.createElement('TR');
                     msgBody.appendChild(bodyRow);
-
                     var msgData = document.createElement('TD');
-                    msgData.width = '700';
-                    msgData.appendChild(document.createTextNode(emails.body))
+                    msgData.width = '500';
+                    msgData.appendChild(document.createTextNode(emails.body));
                     bodyRow.appendChild(msgData);
+
                     main.appendChild(msgTable);
 
                     closeBtn.onclick = function () {
-                        var emptyMsgs = document.getElementsByClassName('MessageBody');
-                        emptyMsgs.remove();
+                        closeBtn.disabled = true;
+                        var dltBody = document.getElementsByClassName('MessageBody');
+                        while (dltBody[0]) {
+                            dltBody[0].parentNode.removeChild(dltBody[0]);
+                        }
                     }
                 };
             };
@@ -74,8 +102,10 @@
                 setInterval(function () {
                     alert("New Message!");
                     addRow(getNewMessage());
+                    unCount += 1;
+                    document.getElementById('Unread').innerHTML = unCount + " Unread Geemails";
                     inboxCount += 1;
-                    document.getElementById('boxCount').innerHTML = inboxCount + " Geemails";
+                    document.getElementById('boxCount').innerHTML =inboxCount + " Total Geemails";
                 }, 10000);
         };
     </script>
@@ -85,11 +115,26 @@
         GEEMAIL
     </h1>
     <h2>
-        Gee, mail sure is coming in...
-        <label id="boxCount"></label>
-        <button id="closeBtn" disabled="disabled">CLOSE ALL OPEN MESSAGES</button>
+        Gee, mail sure is coming in...   
     </h2>
     <div class="container" id="main">
+        <table id="sidebar" class="sideBar">
+            <tr>
+                <td>
+                    <label id="Unread"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="boxCount"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="closeBtn" disabled="disabled">CLOSE ALL OPEN MESSAGES</button>
+                </td>
+            </tr>
+            </table>
         <table id="inbox" class="inTable">
             <tr id="geeHead">
                 <th class="hDate">Date</th>
