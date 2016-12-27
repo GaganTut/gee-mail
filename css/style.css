@@ -17,7 +17,9 @@ h1, h2 {
 }
 table,tr, td, th {
     border: 2px dotted rgb(8, 191, 239);
-    padding: 10px;
+    overflow: hidden;
+    padding: 2px;
+    text-overflow: ellipsis;
 }
 .inTable {
     float: left;
