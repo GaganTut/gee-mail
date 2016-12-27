@@ -29,27 +29,34 @@
                     var geeSend = document.createTextNode(emails.sender);
                     geeSendCol.appendChild(geeSend);
 
-                    var geeBodyCol = newGeeRow.insertCell(3);
+                    var geeBtnCol = newGeeRow.insertCell(3);
                     var bodyBtn = document.createElement('button');
-                    geeBodyCol.appendChild(bodyBtn);
+                    geeBtnCol.appendChild(bodyBtn);
                     bodyBtn.innerHTML = "Open Message";
                     bodyBtn.onclick = function () {
+                        if (bodyBtn.innerHTML === "Open Message") {
+                            var cellBody = newGeeRow.insertCell(4);
+                            var cellData = document.createTextNode(emails.body);
+                            cellBody.appendChild(cellData);
+                            bodyBtn.innerHTML = "Close Message";
+                        } else {
+                            newGeeRow.deleteCell(4);
+                            bodyBtn.innerHTML = "Open Message";
+                        }
+                    }
+                    
+                    /*bodyBtn.onclick = function () {
                         var cellBody = newGeeRow.insertCell(4);
                         var cellData = document.createTextNode(emails.body);
                         cellBody.appendChild(cellData);
                         bodyBtn.innerHTML = "Close Message";
-                        
-                    }
+                    };*/
                 };
                 setInterval(function () {
                     alert("New Message!");
-                    document.getElementById("btnLoad").disabled = false;
-                    btnLoad.onclick = function () {
-                        inboxCount += 1;
-                        document.getElementById('boxCount').innerHTML = inboxCount + " Geemails"
-                        addRow(getNewMessage());
-                        document.getElementById("btnLoad").disabled = true;
-                    }
+                    addRow(getNewMessage());
+                    inboxCount += 1;
+                    document.getElementById('boxCount').innerHTML = inboxCount + " Geemails";
                 }, 10000);
 
         };
@@ -62,11 +69,8 @@
     <h2>
         Gee, mail sure is coming in...
         <button id="boxCount" disabled="disabled"></button>
-        <button id="btnLoad" type="button" disabled="disabled">
-            Load More
-        </button>
     </h2>
-    <div class="container" id="main" style="overflow-x:auto">
+    <div class="container" id="main">
         <table id="inbox" class="inTable">
             <tr id="geeHead">
                 <th id="hDate">Date</th>
