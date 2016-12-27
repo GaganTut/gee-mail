@@ -35,22 +35,16 @@
                     bodyBtn.innerHTML = "Open Message";
                     bodyBtn.onclick = function () {
                         if (bodyBtn.innerHTML === "Open Message") {
-                            var cellBody = newGeeRow.insertCell(4);
+                            var bodyRow = bodyMsg.insertRow(0);
+                            var cellBody = bodyRow.insertCell(0);
                             var cellData = document.createTextNode(emails.body);
                             cellBody.appendChild(cellData);
                             bodyBtn.innerHTML = "Close Message";
                         } else {
-                            newGeeRow.deleteCell(4);
+                            bodyMsg.deleteRow(0);
                             bodyBtn.innerHTML = "Open Message";
                         }
                     }
-                    
-                    /*bodyBtn.onclick = function () {
-                        var cellBody = newGeeRow.insertCell(4);
-                        var cellData = document.createTextNode(emails.body);
-                        cellBody.appendChild(cellData);
-                        bodyBtn.innerHTML = "Close Message";
-                    };*/
                 };
                 setInterval(function () {
                     alert("New Message!");
@@ -73,12 +67,14 @@
     <div class="container" id="main">
         <table id="inbox" class="inTable">
             <tr id="geeHead">
-                <th id="hDate">Date</th>
-                <th id="hSubject">Subject</th>
-                <th id="hSender">Sender</th>
-                <th id="hBody">Body</th>
+                <th class="hDate">Date</th>
+                <th class="hSubject">Subject</th>
+                <th class="hSender">Sender</th>
+                <th class="hBody">Body</th>
             </tr>
-            <tr id="geeBody"></tr>
+        </table>
+        <table id="bodyMsg" class="bodyTbl">
+
         </table>
     </div>
 </body>
