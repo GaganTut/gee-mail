@@ -1,10 +1,11 @@
 body {
     background-color: rgba(153,217,234,0.15);
     background-position: center center;
-    -webkit-background-size: 60%;
-    -moz-background-size: 60%;
-    -o-background-size: 60%;
-    background-size: 60%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 80%;
+    -moz-background-size: 80%;
+    -o-background-size: 80%;
+    background-size: 80%;
 }
 button {
     background-color: rgb(153,217,234);
@@ -17,6 +18,11 @@ h1, h2 {
     color: rgb(3, 24, 30);
     font-family: Garamond;
     text-align: center;
+}
+.logo{
+    height: 180px;
+    width: 180px;
+    
 }
 .sideBar {
     float: left;

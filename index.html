@@ -18,6 +18,7 @@
 
             function addRow(emails) {
                 var newGeeRow = inbox.insertRow(1);
+                newGeeRow.className = "GeeRow";
 
                 var geeDateCol = newGeeRow.insertCell(0);
                 var geeDate = document.createTextNode(emails.date);
@@ -87,7 +88,19 @@
                             dltBody[0].parentNode.removeChild(dltBody[0]);
                         }
                     }
+                    clearBtn.onclick = function () {
+                        var clearMsgs = document.getElementsByClassName('GeeRow');
+                        unCount = 0;
+                        Unread.innerHTML = '0 Unread'
+                        inboxCount = 0;
+                        boxCount.innerHTML = 'No Messages!'
+                        while (clearMsgs[0]) {
+                            clearMsgs[0].parentNode.removeChild(clearMsgs[0]);
+                        }
+                    }
                 };
+
+
             };
                   /*  bodyBtn.onclick = function () {
                         if (bodyBtn.innerHTML === "Open Message") {
@@ -102,7 +115,7 @@
                         }
                     }*/ //OLD BODY BUTTON
                 setInterval(function () {
-                    alert("New Message!");
+                    alert("New Geemail has Arrived!");
                     addRow(getNewMessage());
                     unCount += 1;
                     document.getElementById('Unread').innerHTML = unCount + " Unread Geemails";
@@ -123,6 +136,11 @@
         <table id="sidebar" class="sideBar">
             <tr>
                 <td>
+                    <img src="geePic.png" class="logo"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label id="Unread"></label>
                 </td>
             </tr>
@@ -134,6 +152,13 @@
             <tr>
                 <td>
                     <button id="closeBtn" disabled="disabled">CLOSE ALL OPEN MESSAGES</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="clearBtn">
+                        Clear All Read Messages
+                    </button>
                 </td>
             </tr>
             </table>
