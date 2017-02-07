@@ -10,7 +10,7 @@
            
             for (var z = 0 ; z < 10 ; z++) {
                 addRow(window.geemails[z]);
-            };
+            }
             var inboxCount = 10;
             document.getElementById('boxCount').innerHTML = inboxCount + " Total Geemails";
             var unCount = 10;
@@ -41,8 +41,8 @@
                     if (bodyBtn.innerHTML === "Open Message") {
                         unCount -= 1;
                         document.getElementById('Unread').innerHTML = unCount + " Unread Messages";
-                    };
-                    bodyBtn.innerHTML = "Opened, Click to Open Again"
+                    }
+                    bodyBtn.innerHTML = "Opened, Click to Open Again";
                     closeBtn.disabled = false;
 
                     var msgTable = document.createElement('TABLE');
@@ -55,7 +55,7 @@
                     msgBody.appendChild(dateRow);
                     var dateData = document.createElement('TD');
                     dateData.width = '500';
-                    dateData.appendChild(document.createTextNode("Date:  " + emails.date))
+                    dateData.appendChild(document.createTextNode("Date:  " + emails.date));
                     dateRow.appendChild(dateData);
 
                     var senderRow = document.createElement('TR');
@@ -87,21 +87,21 @@
                         while (dltBody[0]) {
                             dltBody[0].parentNode.removeChild(dltBody[0]);
                         }
-                    }
+                    };
                     clearBtn.onclick = function () {
                         var clearMsgs = document.getElementsByClassName('GeeRow');
                         unCount = 0;
-                        Unread.innerHTML = '0 Unread'
+                        Unread.innerHTML = '0 Unread';
                         inboxCount = 0;
-                        boxCount.innerHTML = 'No Messages!'
+                        boxCount.innerHTML = 'No Messages!';
                         while (clearMsgs[0]) {
                             clearMsgs[0].parentNode.removeChild(clearMsgs[0]);
                         }
-                    }
+                    };
                 };
 
 
-            };
+            }
                   /*  bodyBtn.onclick = function () {
                         if (bodyBtn.innerHTML === "Open Message") {
                             var bodyRow = bodyMsg.insertRow();
